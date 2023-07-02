@@ -1,8 +1,16 @@
+name: Deploy
+
 on:
   workflow_dispatch:
+
 jobs:
-  my_job:
-    name: Deploy to Cloudflare Workers with Wrangler
+  deploy:
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
-      - uses: cloudflare/wrangler-action@2.0.0
+      - uses: actions/checkout@v2
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
