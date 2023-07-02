@@ -1,0 +1,8 @@
+on:
+  workflow_dispatch:
+jobs:
+  my_job:
+    name: Deploy to Cloudflare Workers with Wrangler
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cloudflare/wrangler-action@2.0.0
